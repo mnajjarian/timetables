@@ -1,0 +1,74 @@
+import React, { useEffect, useContext } from 'react';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/images/marker-shadow.png';
+import 'leaflet/dist/images/marker-icon.png';
+import polyline from 'polyline';
+import L from 'leaflet';
+import { MapContext } from './context/context';
+
+
+
+
+const MapComponent: React.FC = () => {
+
+
+const { data } = useContext(MapContext);
+console.log(data)
+    useEffect(() => {
+            const map = L.map('map').setView([60.192059,24.945831], 13)
+            L.tileLayer('https://cdn.digitransit.fi/map/v1/{id}/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+              '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 19,
+            tileSize: 512,
+            zoomOffset: -1,
+            id: 'hsl-map'}).addTo(map);
+            
+            const Icon = L.icon({
+                iconUrl: require('leaflet/dist/images/marker-icon.png'),
+                shadowUrl: require("leaflet/dist/images/marker-shadow.png")
+              });
+
+
+            data.markers && data.markers.map(m => {
+                L.marker(m, { icon: Icon }).addTo(map)
+                for(let i = 0; i < data.points.length; i++) {
+                    const points = polyline.decode(data.points[i].replace(
+                        /\\\\/g,
+                        '\\'
+                    )
+                );
+        
+                map.flyToBounds(
+                    L.polyline(points as [number, number][], {
+                        color: 'blue',
+                        weight: 3
+                    })
+                        .addTo(map)
+                        .getBounds()
+                );
+                }
+                map.flyTo(data.markers[0], 15)
+            })
+
+        return (): void => {
+            map.off()
+            map.remove()
+        }
+        
+    }, [data]);
+
+    return (
+        <div className="container-fluid">
+            <div className="row">
+                <div
+                    className="map"
+                    style={{ position: 'absolute', height: '100%', width: '100%', zIndex: -1 }}
+                    id="map"
+                />
+            </div>
+        </div>
+    );
+};
+
+export default MapComponent;
