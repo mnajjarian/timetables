@@ -1,50 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import axios from 'axios';
 import Place from './Place';
 import Journey from './Journey';
-import MapComponent from './MapComponent';
 import { LatLngExpression } from 'leaflet';
+import { Feature } from './api/interfaces';
 
-interface Data {
+interface State {
     features: Feature[];
 }
 
-export interface Feature {
-    properties: Property;
-    geometry: Geometry;
-}
-
-export interface Property {
-    id: string;
-    name: string;
-    label: string;
-}
-interface Geometry {
-    coordinates: [];
-}
-
-const initialState: Data = {
+const initialState: State = {
     features: [
         {
             properties: { id: '', name: '', label: '' },
-            geometry: { coordinates: [] },
+            geometry: { coordinates: [] }
         }
     ]
 };
 
-const Search = (): JSX.Element => {
+const Search: FC = (): JSX.Element => {
     const [state, setState] = useState('');
-    const [label, setLabel] = useState('')
-    const [data, setData] = useState<Data>(initialState);
+    const [label, setLabel] = useState('');
+    const [data, setData] = useState<State>(initialState);
     const [coordinate, setCoordinate] = useState<LatLngExpression>();
     const [toggle, setToggle] = useState(false);
 
-
     const handleClick = (coord, label) => (): void => {
-        setCoordinate(coord)
-        setLabel(label)
-        setToggle(false)
-        console.log(typeof coord[0])
+        setCoordinate(coord);
+        setLabel(label);
+        setToggle(false);
     };
 
     useEffect(() => {
@@ -56,16 +40,11 @@ const Search = (): JSX.Element => {
     const handleChange = (e: { target: { value: string } }): void => {
         setState(e.target.value);
     };
-   
+
     const handleToggle = (): void => setToggle(true);
-    
-    console.log('60.169407, 24.926007')
 
     return (
-        <>
-        <MapComponent />
-        
-        <div className="col-md-4 mt-2">
+        <div className="col-md-5 mt-2">
             <input
                 className="form-control"
                 type="search"
@@ -75,18 +54,26 @@ const Search = (): JSX.Element => {
                 onChange={handleChange}
                 onFocus={handleToggle}
             />
-            
-            {data.features?.length > 0 && toggle && state.length > 1 && (
-                <div className="list">
-                    {data.features?.map(feature => (
-                      <Place key={feature.properties.id} feature={feature} handleClick={handleClick} />
-                    ))}
+
+            <div className="d">
+                {state && (
+                    <a className="btn btn-sm" data-toggle="collapse" href="#menuCard" role="button">
+                        <span className="fa fa-grip-lines fa-lg"></span>
+                        
+                    </a>
+                )}
+                <div className="collapse show" id="menuCard">
+                    {data.features?.length > 0 && toggle && state.length > 1 && (
+                        <div className="dropdown">
+                            {data.features?.map(feature => (
+                                <Place key={feature.properties.id} feature={feature} handleClick={handleClick} />
+                            ))}
+                        </div>
+                    )}
+                    <Journey origin={{ label, coord: coordinate }} />
                 </div>
-            )}
-            <Journey origin={{ label, coord: coordinate }}  />
-        
+            </div>
         </div>
-   </>
     );
 };
 

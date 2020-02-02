@@ -11,3 +11,59 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.leaflet-pane, .leaflet-tile-pane, .leaflet-map-pane, .map, .leaflet-container {
+  z-index: -1;
+}
+.map {
+  z-index: -1;
+}
+
+.dropdown {
+  width: 100%;
+  background-color: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-size: 15px;
+    overflow: hidden;
+    width: 392px;
+    padding: 8px 0;
+    margin-top: 1px;
+    outline: none;
+}
+
+.fa-random, .fa-directions {
+  cursor: pointer;
+}
+
+.route-table {
+  cursor: pointer;
+}
+.timetable {
+  background-color: #fff;
+}
+
+.containerd {
+  margin: 0;
+  padding: 0;
+}
+
+a[href='#menuCard'] {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+.card-points {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Override leaflet styles */
+
+.leaflet-left {
+  padding: 10px;
+  left: auto;
+  right: 0;
+}

@@ -1,17 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { Itinerary, Leg, Plan } from './api/route';
+import { Itinerary, Leg, Plan, Legs } from './api/interfaces';
 import { MapContext } from './context/context';
 import { Types } from './reducer/reducer';
+import { parseTime, getTime, switchMode } from './utils';
 
 interface TimetableProps {
     itineraries: Itinerary;
     plan?: Plan;
-}
-
-enum Legs {
-    BUSS = 'BUS',
-    WALK = 'WALK',
-    RAIL = 'RAIL'
 }
 
 const switchIcon = (leg: Leg): JSX.Element | undefined => {
@@ -37,31 +32,57 @@ const switchIcon = (leg: Leg): JSX.Element | undefined => {
     }
 };
 
-const switchMode = (leg: Leg): JSX.Element | undefined => {
-    switch (leg.mode) {
-        case Legs.WALK:
-            return <div></div>;
-
-            break;
-
-        default:
-            break;
-    }
+export const Detailes = ({ itineraries }: { itineraries: Itinerary }): JSX.Element => {
+    return (
+        <div className="container m-2">
+            {itineraries.legs.map((leg, index) => (
+                    <div key={index} className="row">
+                        <div className="col-md-3">
+                            {/*  <span className="fa fa-walking fa-lg"></span> */}
+                            <div className="row">
+                                <span>{leg.from.name}</span>
+                            </div>
+                            <div className="row">
+                                {index === itineraries.legs.length - 1 && <span className='align-self-flex-end' >{leg.to.name}</span>}
+                            </div>
+                        </div>
+                        <div className="col-md-2 text-center p-0">
+                            <div className="row justify-content-center align-items-center">
+                                <span className="far fa-dot-circle fa-lg"></span>
+                            </div>
+                            <div className="row justify-content-center align-items-center">
+                                <span className={switchMode(leg.mode)}></span>
+                            </div>
+                            {index === itineraries.legs.length - 1 && (
+                                <div className="row justify-content-center align-items-center">
+                                    <span className="fa fa-dot-circle fa-lg"></span>
+                                </div>
+                            )}
+                        </div>
+                        <div className="col p-0">
+                            <span> {getTime(leg.startTime)} </span>
+                            <span className="ml-4">
+                                {leg.mode === 'WALK'
+                                    ? 'Walking '
+                                    : leg.mode === 'BUS'
+                                    ? 'Take the bus ' + leg.trip.pattern.name.split('(')[0]
+                                    : 'Take the Train ' + leg.trip.pattern.name.split('(')[0]}
+                            </span>
+                            <div className='row offset-3'>
+                            {parseTime(new Date(leg.startTime), new Date(leg.endTime))}
+                            </div>
+                        </div>
+                    </div>
+            ))}
+        </div>
+    );
 };
+
 const Timetable: React.FC<TimetableProps> = (props: TimetableProps): JSX.Element => {
-    //const [showRoute, setShowRoute] = useState(false);
+    const [showRoute, setShowRoute] = useState(true);
     const { dataDispatch } = useContext(MapContext);
 
-    const { itineraries, plan } = props;
-
-    const getTime = (unix: string): string => {
-        const date = new Date(unix);
-        const hours = date.getHours();
-        const minutes = '0' + date.getMinutes();
-
-        const formattedTime = hours + ':' + minutes.substr(-2);
-        return formattedTime;
-    };
+    const { itineraries, plan} = props;
     const handleRoute = (): void => {
         const points = itineraries.legs.map(leg => leg.legGeometry.points);
 
@@ -95,7 +116,8 @@ const Timetable: React.FC<TimetableProps> = (props: TimetableProps): JSX.Element
                         <span>{getTime(itineraries.endTime)}</span>
                     </span>
                     <span className="badge badge-primary badge-pill ml-auto">
-                        {(Number(itineraries.duration) / 60).toFixed() + ' min'}
+                        {/*  {(Number(itineraries.duration) / 60).toFixed() + ' min'} */}
+                        {parseTime(new Date(itineraries.startTime), new Date(itineraries.endTime))}
                     </span>
                 </div>
                 <div className="row ml-4">
@@ -107,7 +129,9 @@ const Timetable: React.FC<TimetableProps> = (props: TimetableProps): JSX.Element
                     ))}
                 </div>
             </li>
-            {/* <div>{showRoute && itineraries.legs.map(leg => <div key={leg.startTime}>{switchMode(leg)}</div>)}</div> */}
+                {/* <a className='btn btn-primary' data-toggle='collapse' href='/' role='button'>
+                    Details
+                </a> */}
         </>
     );
 };

@@ -1,3 +1,5 @@
+import { Legs } from './api/interfaces';
+
 export const parseTime = (start: Date, end: Date): string => {
     let msec = +new Date(end) - +new Date(start);
     const hh = Math.floor(msec / 1000 / 60 / 60);
@@ -21,3 +23,16 @@ export const getTime = (unix: string): string => {
     const formattedTime = hours + ':' + minutes.substr(-2);
     return formattedTime;
 };
+
+export const switchMode = (mode: string): string => {
+    switch (mode) {
+        case Legs.WALK:
+            return 'fa fa-ellipsis-v fa-lg mt-2 mb-2'
+        case Legs.RAIL:
+            return 'fa fa-grip-lines-vertical fa-lg mt-2 mb-2'
+        case Legs.BUSS:
+            return 'fa fa-grip-lines-vertical fa-lg mt-2 mb-2'
+        default:
+            return '';
+    }
+}

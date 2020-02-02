@@ -37,6 +37,7 @@ export const FIND_PLAN = gql`
                         gtfsId
                         pattern {
                             code
+                            name
                         }
                         tripHeadsign
                     }

@@ -1,39 +1,76 @@
 {
-  "name": "app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
-    "typescript": "~3.7.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "app",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.12.0",
+        "@testing-library/dom": "^6.11.0",
+        "@testing-library/jest-dom": "^5.0.0",
+        "@testing-library/react": "^9.4.0",
+        "@testing-library/user-event": "^8.0.3",
+        "@types/jest": "^24.0.0",
+        "@types/leaflet": "^1.5.8",
+        "@types/node": "^12.0.0",
+        "@types/react": "^16.9.0",
+        "@types/react-dom": "^16.9.0",
+        "apollo-boost": "^0.4.7",
+        "apollo-cache": "^1.3.4",
+        "apollo-client": "^2.6.8",
+        "apollo-link": "^1.2.13",
+        "apollo-utilities": "^1.3.3",
+        "axios": "^0.19.2",
+        "bootstrap": "^4.4.1",
+        "core-js": "^3.6.4",
+        "fetch": "^1.1.0",
+        "graphql": "^14.5.8",
+        "graphql-tag": "^2.10.1",
+        "jquery": "^3.4.1",
+        "leaflet": "^1.6.0",
+        "polyline": "^0.2.0",
+        "popper.js": "^1.16.1",
+        "react": "^16.12.0",
+        "react-apollo": "^3.1.3",
+        "react-dom": "^16.12.0",
+        "react-is": "^16.12.0",
+        "react-leaflet": "^2.6.1",
+        "react-scripts": "3.3.0",
+        "styled-components": "^5.0.0",
+        "typescript": "~3.7.2",
+        "uikit": "^3.3.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/polyline": "^0.1.28",
+        "@types/react-leaflet": "^2.5.0",
+        "@types/styled-components": "^4.4.2",
+        "@typescript-eslint/eslint-plugin": "^2.17.0",
+        "@typescript-eslint/parser": "^2.17.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.9.0",
+        "eslint-plugin-jest": "^23.6.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-react": "^7.18.0",
+        "prettier": "^1.19.1"
+    }
 }

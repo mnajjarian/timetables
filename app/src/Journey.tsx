@@ -33,17 +33,20 @@ const Journey: FC<Props> = (props: Props): JSX.Element => {
         return <div></div>;
     }
     return (
-        <div>
-            <div className="card">
-                <div className="card-body">
-                    <div>{toggle ? destination.label : label}</div>
-                    <span className="fa fa-random fa-lg" role="button" onClick={handleSwitch}></span>
-                    <div>{!toggle ? destination.label : label}</div>
+        <div className="card">
+            <div className="card-body">
+                <div className="alert alert-primary m-0">{toggle ? destination.label : label}</div>
+                <div className="card-points">
+                    <span className="fa fa-random fa-lg p-2" role="button" onClick={handleSwitch}></span>
                 </div>
-                <div>
-                    <span className="fa fa-directions fa-lg" onClick={goToDirection}></span>
+                <div className="alert alert-danger">{!toggle ? destination.label : label}</div>
+                <div className='card-points' >
+                    <button className='btn btn-primary ml-auto'>
+                    <span className="fa fa-directions fa-lg " onClick={goToDirection}></span>
+                    </button>
                 </div>
             </div>
+
             {showRoute && coord && destination.coord && (
                 <RouteInfo
                     origin={{ coordinate: !toggle ? coord : destination.coord }}
