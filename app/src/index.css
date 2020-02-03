@@ -12,11 +12,18 @@ code {
     monospace;
 }
 
-.leaflet-pane, .leaflet-tile-pane, .leaflet-map-pane, .map, .leaflet-container {
-  z-index: -1;
+.collapse {
+  font-size: .9rem;
+  overflow-x: scroll;
 }
-.map {
-  z-index: -1;
+.search {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 33;
+  max-height: 100vh;
+  overflow-x: scroll;
+  padding-bottom: 20px;
 }
 
 .dropdown {
@@ -32,21 +39,23 @@ code {
     outline: none;
 }
 
+
+.btn:focus, .btn-sm:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}
 .fa-random, .fa-directions {
   cursor: pointer;
 }
 
-.route-table {
-  cursor: pointer;
+#map {
+  z-index: -1;
 }
+
 .timetable {
   background-color: #fff;
 }
 
-.containerd {
-  margin: 0;
-  padding: 0;
-}
 
 a[href='#menuCard'] {
   display: flex;

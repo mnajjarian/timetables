@@ -1,3 +1,4 @@
+import { LatLngExpression } from "leaflet";
 
 
 export interface Variable {
@@ -47,8 +48,8 @@ export interface Leg {
   mode: string
   startTime: string
   endTime: string
-  from: Coord
-  to: Coord
+  from: Spot
+  to: Spot
   trip: Trip
   route: {
     shortName?: string
@@ -57,10 +58,15 @@ export interface Leg {
     points: string
   }
 }
-export interface Coord {
-  lat: string
-  lon: string
+
+export interface Spot {
+  lat: number
+  lon: number
   name: string
+}
+export interface Coord {
+  label?: string;
+  coordinate?: LatLngExpression;
 }
 
 interface Trip {

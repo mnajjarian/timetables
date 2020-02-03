@@ -1,14 +1,10 @@
 import React, { useState, FC } from 'react';
-import { LatLngExpression } from 'leaflet';
 import RouteInfo from './RouteInfo';
+import { Coord } from '../api/interfaces';
+
 
 interface Props {
-    origin: Spot;
-}
-
-interface Spot {
-    label: string;
-    coord?: LatLngExpression;
+    origin: Coord;
 }
 
 const Journey: FC<Props> = (props: Props): JSX.Element => {
@@ -18,12 +14,12 @@ const Journey: FC<Props> = (props: Props): JSX.Element => {
     const goToDirection = (): void => setShowRoute(!showRoute);
 
     const {
-        origin: { label, coord }
+        origin: { label, coordinate }, origin
     } = props;
 
-    const destination: Spot = {
+    const destination: Coord = {
         label: 'Pohjoinen Rautatiekatu 25, Helsinki',
-        coord: [60.169407, 24.926007]
+        coordinate: [60.169407, 24.926007]
     };
     const handleSwitch = (): void => {
         setToggle(!toggle);
@@ -47,10 +43,10 @@ const Journey: FC<Props> = (props: Props): JSX.Element => {
                 </div>
             </div>
 
-            {showRoute && coord && destination.coord && (
+            {showRoute && coordinate && destination.coordinate && (
                 <RouteInfo
-                    origin={{ coordinate: !toggle ? coord : destination.coord }}
-                    destination={{ coordinate: !toggle ? destination.coord : coord }}
+                    origin={ !toggle ? origin : destination }
+                    destination={!toggle ? destination : origin}
                 />
             )}
         </div>

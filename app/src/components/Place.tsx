@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feature } from './api/interfaces';
+import { Feature } from '../api/interfaces';
 
 interface Props {
     feature: Feature;
@@ -16,7 +16,7 @@ const Place: React.FC<Props> = (props: Props): JSX.Element => {
                 key={feature.properties.id}
                 onClick={handleClick(feature.geometry.coordinates.reverse(), feature.properties.label)}
             >
-                {feature.properties.name}
+                {feature.properties.label}
             </a>
         </div>
     );

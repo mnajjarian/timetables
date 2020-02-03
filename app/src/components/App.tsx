@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
-import { client } from './api/api';
+import { client } from '../api/api';
 import Search from './Search';
 import Layout from './Layout';
 

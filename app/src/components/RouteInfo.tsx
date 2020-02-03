@@ -1,22 +1,20 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import { Data, Variable } from './api/interfaces';
-import Timetable, { Detailes } from './Timetable';
-import { FIND_PLAN } from './query';
-import { LatLngExpression } from 'leaflet';
+import { Data, Variable, Coord } from '../api/interfaces';
+import Timetable from './Timetable';
+import { FIND_PLAN } from '../query';
 
 interface Props {
-    origin: {
-        coordinate: LatLngExpression;
-    };
-    destination: {
-        coordinate: LatLngExpression;
-    };
+    origin: Coord
+    destination: Coord
 }
 
 const RouteInfo: React.FC<Props> = (props: Props) => {
-    const [originLat, originLon] = props.origin.coordinate;
-    const [destLat, destLon] = props.destination.coordinate;
+    const{origin, destination} = props;
+
+    const [originLat, originLon] = origin.coordinate;
+    const [destLat, destLon] = destination.coordinate;
+
     if (!originLat && !destLat) {
         return <div></div>;
     }
@@ -27,10 +25,10 @@ const RouteInfo: React.FC<Props> = (props: Props) => {
                 if (loading) return <div className="spinner-border m-5" role="status"></div>;
                 if (error) return <div>Error...</div>;
                 return (
-                    <div style={{ zIndex: 9999, backgroundColor: '#ddd' }}>
+                    <div className='route-list bg-warning' >
                         {data?.plan.itineraries.map(it => (
-                            <ul className="list-group bg-info">
-                                <Timetable key={it.duration} itineraries={it} plan={data?.plan} />
+                            <ul className="list-group">
+                                <Timetable key={it.duration} itineraries={it} plan={data?.plan} origin={origin} destination={destination} />
                             </ul>
                         ))}
                     </div>

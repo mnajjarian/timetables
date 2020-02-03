@@ -3,7 +3,7 @@ import axios from 'axios';
 import Place from './Place';
 import Journey from './Journey';
 import { LatLngExpression } from 'leaflet';
-import { Feature } from './api/interfaces';
+import { Feature } from '../api/interfaces';
 
 interface State {
     features: Feature[];
@@ -28,6 +28,7 @@ const Search: FC = (): JSX.Element => {
     const handleClick = (coord, label) => (): void => {
         setCoordinate(coord);
         setLabel(label);
+        setState(label)
         setToggle(false);
     };
 
@@ -44,7 +45,7 @@ const Search: FC = (): JSX.Element => {
     const handleToggle = (): void => setToggle(true);
 
     return (
-        <div className="col-md-5 mt-2">
+        <div className="search col-md-5 mt-2">
             <input
                 className="form-control"
                 type="search"
@@ -55,8 +56,8 @@ const Search: FC = (): JSX.Element => {
                 onFocus={handleToggle}
             />
 
-            <div className="d">
-                {state && (
+            <div>
+                {label && (
                     <a className="btn btn-sm" data-toggle="collapse" href="#menuCard" role="button">
                         <span className="fa fa-grip-lines fa-lg"></span>
                         
@@ -70,7 +71,7 @@ const Search: FC = (): JSX.Element => {
                             ))}
                         </div>
                     )}
-                    <Journey origin={{ label, coord: coordinate }} />
+                    <Journey origin={{ label, coordinate }} />
                 </div>
             </div>
         </div>

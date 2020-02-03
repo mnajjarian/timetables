@@ -3,7 +3,7 @@ import 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/images/marker-icon.png';
 import polyline from 'polyline';
 import L from 'leaflet';
-import { MapContext } from './context/context';
+import { MapContext } from '../context/context';
 
 interface Props {
     children?: React.ReactNode;
@@ -44,7 +44,7 @@ const Layout: React.FC<Props> = (props: Props): JSX.Element => {
                             .getBounds()
                     );
                 }
-                map.flyTo(data.markers[1], 16);
+                //map.flyTo(data.markers[1], 11);
             });
 
         return (): void => {
@@ -54,7 +54,10 @@ const Layout: React.FC<Props> = (props: Props): JSX.Element => {
     }, [data]);
 
     return (
-        <div style={{ position: 'absolute', height: '100%', width: '100%', zIndex: -1 }} id="map">
+        
+            
+        <div>
+            <div style={{ height: '100vh', width: '100%', zIndex: 1 }} id="map" />
             {props.children}
         </div>
     );
