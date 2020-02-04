@@ -38,7 +38,7 @@ const Search: FC = (): JSX.Element => {
     }, [state, coordinate]);
 
     const handleChange = (e: { target: { value: string } }): void => {
-        setState(e.target.value);
+        setState(e.target.value);  
     };
 
     const handleToggle = (): void => setToggle(true);
@@ -46,6 +46,7 @@ const Search: FC = (): JSX.Element => {
     return (
         <div className="search col-md-5 mt-2">
             <input
+                data-testid="test-input"
                 className="form-control"
                 type="search"
                 placeholder="Search..."
@@ -64,7 +65,7 @@ const Search: FC = (): JSX.Element => {
                 )}
                 <div className="collapse show" id="menuCard">
                     {state && toggle && data.features?.length > 0 && (
-                        <div className="dropdown">
+                        <div data-testid='test-dropdown' className="dropdown">
                             {data.features?.map(feature => (
                                 <Place key={feature.properties.id} feature={feature} handleClick={handleClick} />
                             ))}

@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitForElement } from '@testing-library/react';
+import axiosMock from 'axios';
 import { Search } from './index';
 
 it('rende Search', () => {
@@ -16,9 +17,10 @@ const setup = () => {
     }
 }
 it('change input value on input change', () => {
-    //const input = setup();
     const { getByTestId } = render(<Search />)
     const input = getByTestId('test-input') as HTMLInputElement;
+
+    expect(input.value).toBe('') // empty before
 
     input.onchange = jest.fn();
 
@@ -26,4 +28,5 @@ it('change input value on input change', () => {
 
     expect(input.onchange).toHaveBeenCalled();
     expect(input.value).toEqual('test input');
+
 });
