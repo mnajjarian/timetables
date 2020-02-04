@@ -30,7 +30,7 @@ const Layout: React.FC<Props> = (props: Props): JSX.Element => {
         });
 
         data.markers &&
-            data.markers.map(m => {
+            data.markers.forEach(m => {
                 L.marker(m, { icon: Icon }).addTo(map);
                 for (let i = 0; i < data.points.length; i++) {
                     const points = polyline.decode(data.points[i].replace(/\\\\/g, '\\'));

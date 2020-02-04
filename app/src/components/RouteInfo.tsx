@@ -27,7 +27,7 @@ const RouteInfo: React.FC<Props> = (props: Props) => {
                 return (
                     <div className='route-list bg-warning' >
                         {data?.plan.itineraries.map(it => (
-                            <ul className="list-group">
+                            <ul key={it.duration} className="list-group">
                                 <Timetable key={it.duration} itineraries={it} plan={data?.plan} origin={origin} destination={destination} />
                             </ul>
                         ))}

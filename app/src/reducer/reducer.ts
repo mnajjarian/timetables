@@ -18,7 +18,6 @@ export type DataAction =
     | { type: 'ADD_POINT', payload: { points: string[], markers: LatLngExpression[]} }
 
 const reducer = (state = initialState, action: DataAction): DataState => {
-    console.log(action)
     switch (action.type) {
         case Types.ADD_POINT:
             return {...state, points:  action.payload.points, markers: action.payload.markers };

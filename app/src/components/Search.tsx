@@ -50,7 +50,7 @@ const Search: FC = (): JSX.Element => {
                 type="search"
                 placeholder="Search..."
                 name="address"
-                value={state}
+                value={state || ''}
                 onChange={handleChange}
                 onFocus={handleToggle}
             />

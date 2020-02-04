@@ -11,14 +11,13 @@ const Place: React.FC<Props> = (props: Props): JSX.Element => {
 
     return (
         <div>
-            <a
-                href="#"
+            <button
                 className="dropdown-item"
                 key={feature.properties.id}
                 onClick={handleClick(feature.geometry.coordinates.reverse(), feature.properties.label)}
             >
                 {feature.properties.label}
-            </a>
+            </button>
         </div>
     );
 };
