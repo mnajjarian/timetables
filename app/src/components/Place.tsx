@@ -1,9 +1,10 @@
 import React from 'react';
 import { Feature } from '../api/interfaces';
+import { LatLngExpression, LatLng } from 'leaflet';
 
 interface Props {
     feature: Feature;
-    handleClick: (coords: string[], label: string) => () => void;
+    handleClick: (coords: LatLngExpression | LatLng[], label: string) => () => void;
 }
 const Place: React.FC<Props> = (props: Props): JSX.Element => {
     const { feature, handleClick } = props;

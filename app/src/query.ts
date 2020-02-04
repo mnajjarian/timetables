@@ -12,7 +12,6 @@ export const FIND_PLAN = gql`
                 lat
             }
             itineraries {
-                walkDistance
                 duration
                 startTime
                 endTime
@@ -34,7 +33,6 @@ export const FIND_PLAN = gql`
                         name
                     }
                     trip {
-                        gtfsId
                         pattern {
                             code
                             name
@@ -42,7 +40,6 @@ export const FIND_PLAN = gql`
                         tripHeadsign
                     }
                     legGeometry {
-                        length
                         points
                     }
                 }

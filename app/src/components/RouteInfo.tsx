@@ -1,7 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { Data, Variable, Coord } from '../api/interfaces';
-import Timetable from './Timetable';
+import { Timetable } from './index';
 import { FIND_PLAN } from '../query';
 
 interface Props {

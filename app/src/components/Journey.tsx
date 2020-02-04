@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react';
-import RouteInfo from './RouteInfo';
+import { RouteInfo } from './index';
 import { Coord } from '../api/interfaces';
 
 

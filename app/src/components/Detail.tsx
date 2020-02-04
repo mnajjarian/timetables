@@ -1,24 +1,28 @@
 import React from 'react';
-import { getTime, parseTime, switchMode } from '../utils';
+import { getTime, parseTime, switchMode } from '../utils/helpers';
 import { Itinerary, Coord } from '../api/interfaces';
 
 interface Props {
-    origin: Coord;
-    destination: Coord;
-    itineraries: Itinerary
+    origin?: Coord;
+    destination?: Coord;
+    itineraries?: Itinerary
 }
-export const Detailes = (props: Props): JSX.Element => {
+export const Detail = (props: Props): JSX.Element => {
     const { itineraries, origin, destination } = props;
+
+    if(!itineraries || !origin || !destination) {
+        return <div></div>
+    }
     return (
         <div className="container m-2">
             {itineraries.legs.map((leg, index) => (
                     <div key={index} className="row">
                         <div className="col-md-3">
                             <div className="row">
-                                <span>{index === 0 ? origin.label?.split(',')[0] : leg.from.name}</span>
+                                <span data-testid="originId" >{index === 0 ? origin.label?.split(',')[0] : leg.from.name}</span>
                             </div>
                             <div className="row">
-                                {index === itineraries.legs.length - 1 && <span className='align-self-flex-end' >{destination.label?.split(',')[0]}</span>}
+                                {index === itineraries.legs.length - 1 && <span data-testid="destinationId" className='align-self-flex-end' >{destination.label?.split(',')[0]}</span>}
                             </div>
                         </div>
                         <div className="col-md-2 text-center p-0">
@@ -40,8 +44,8 @@ export const Detailes = (props: Props): JSX.Element => {
                                 {leg.mode === 'WALK'
                                     ? 'Walking '
                                     : leg.mode === 'BUS'
-                                    ? 'Take the bus ' + leg.trip.pattern.name.split('(')[0]
-                                    : 'Take the Train ' + leg.trip.pattern.name.split('(')[0]}
+                                    ? 'Take the bus ' + leg.trip?.pattern.name.split('(')[0]
+                                    : 'Take the Train ' + leg.trip?.pattern.name.split('(')[0]}
                             </span>
                             <div className='row offset-3'>
                             {parseTime(new Date(leg.startTime), new Date(leg.endTime))}
@@ -52,3 +56,5 @@ export const Detailes = (props: Props): JSX.Element => {
         </div>
     );
 };
+
+export default Detail;

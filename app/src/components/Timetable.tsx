@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Itinerary, Leg, Plan, Legs, Coord } from '../api/interfaces';
 import { MapContext } from '../context/context';
 import { Types } from '../reducer/reducer';
-import { parseTime, getTime } from '../utils';
-import { Detailes } from './Details';
+import { parseTime, getTime } from '../utils/helpers';
+import { Detaile } from './index';
 
 interface TimetableProps {
     itineraries: Itinerary;
@@ -18,7 +18,7 @@ const switchIcon = (leg: Leg): JSX.Element | undefined => {
             return (
                 <span className="badge badge-primary p-1">
                     <span className="fa fa-bus-alt mr-1"></span>
-                    <span>{leg.route.shortName}</span>
+                    <span>{leg.route?.shortName}</span>
                 </span>
             );
         case Legs.WALK:
@@ -27,7 +27,7 @@ const switchIcon = (leg: Leg): JSX.Element | undefined => {
             return (
                 <span className="badge badge-info p-1">
                     <span className="fa fa-subway mr-1"></span>
-                    <span>{leg.route.shortName}</span>
+                    <span>{leg.route?.shortName}</span>
                 </span>
             );
         default:
@@ -91,7 +91,7 @@ const Timetable: React.FC<TimetableProps> = (props: TimetableProps): JSX.Element
                 </a>
             </li>
             <div className='collapse' id={"ID"+itineraries.duration}>
-                 <Detailes itineraries={itineraries} origin={origin} destination={destination} />
+                 <Detaile itineraries={itineraries} origin={origin} destination={destination} />
             </div>
         </div>
     );

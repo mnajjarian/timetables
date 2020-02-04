@@ -1,7 +1,6 @@
 import React, { useState, useEffect, FC } from 'react';
 import axios from 'axios';
-import Place from './Place';
-import Journey from './Journey';
+import { Journey, Place } from './index';
 import { LatLngExpression } from 'leaflet';
 import { Feature } from '../api/interfaces';
 
@@ -19,8 +18,8 @@ const initialState: State = {
 };
 
 const Search: FC = (): JSX.Element => {
-    const [state, setState] = useState('');
-    const [label, setLabel] = useState('');
+    const [state, setState] = useState<string | undefined>();
+    const [label, setLabel] = useState<string | undefined>();
     const [data, setData] = useState<State>(initialState);
     const [coordinate, setCoordinate] = useState<LatLngExpression>();
     const [toggle, setToggle] = useState(false);
@@ -57,14 +56,14 @@ const Search: FC = (): JSX.Element => {
             />
 
             <div>
-                {label && (
+                {label && state && (
                     <a className="btn btn-sm" data-toggle="collapse" href="#menuCard" role="button">
                         <span className="fa fa-grip-lines fa-lg"></span>
                         
                     </a>
                 )}
                 <div className="collapse show" id="menuCard">
-                    {data.features?.length > 0 && toggle && state.length > 1 && (
+                    {state && toggle && data.features?.length > 0 && (
                         <div className="dropdown">
                             {data.features?.map(feature => (
                                 <Place key={feature.properties.id} feature={feature} handleClick={handleClick} />

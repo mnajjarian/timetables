@@ -1,4 +1,4 @@
-import { Legs } from './api/interfaces';
+import { Legs } from '../api/interfaces';
 
 export const parseTime = (start: Date, end: Date): string => {
     let msec = +new Date(end) - +new Date(start);
