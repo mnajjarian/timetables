@@ -16,7 +16,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/repo
+    working_directory: ~/app
 
     steps:
       - checkout
@@ -24,18 +24,20 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
 
-      - run: yarn install
+      - run:
+        name: Install Dependencies
+        command: yarn install --frozen-lockfile
 
       - save_cache:
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.cache
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
 
       - run: yarn lint
       # run tests!
       - run: yarn test
-      - run: yarn ci:cypress-run
+      - run: $(yarn bin)cypress run --record --key=${CYPRESS_RECORD_KEY}
