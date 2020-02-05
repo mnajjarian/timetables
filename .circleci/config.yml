@@ -39,6 +39,3 @@ jobs:
       # run tests!
       - run: yarn test
       - run: yarn ci:cypress-run
-          cache:
-            paths:
-              - cache/Cypress
