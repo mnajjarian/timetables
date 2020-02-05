@@ -1,4 +1,4 @@
-import { LatLngExpression, LatLng } from "leaflet";
+import { LatLngExpression, LatLng } from 'leaflet'
 
 
 export interface Variable {

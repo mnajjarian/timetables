@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const FIND_PLAN = gql`
     query findByCoord($originLat: Float!, $originLon: Float!, $destLat: Float!, $destLon: Float!) {
@@ -46,4 +46,4 @@ export const FIND_PLAN = gql`
             }
         }
     }
-`;
+`
