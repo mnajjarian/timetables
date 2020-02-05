@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:13.7.0-browsers
-
+      - image: cypress/base:10
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -27,14 +27,15 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
       - run: yarn lint
 
       # run tests!
-      - run: yarn ci:cypress-run
       - run: yarn test
+      - run: 
+          name: End to end tests
+          command: yarn ci:cypress-run
+     
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-node-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
