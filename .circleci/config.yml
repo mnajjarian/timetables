@@ -1,42 +1,25 @@
-# JavaScript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
-orbs:
-  cypress: cypress-io/cypress@1
+version: 2.1
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node:12.9.1-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
+  
     working_directory: ~/repo
-
-    steps:
+steps:
       - checkout
-      # Download and cache dependencies
+      
       - restore_cache:
-          keys:
-            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
-            - v1-deps-{{ .Branch }}
-            - v1-deps
-
-      - run:
-        name: Install Dependencies
-        command: yarn install --frozen-lockfile
-
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      
+      - run: yarn install
+   
       - save_cache:
-          paths:
-            - ~/.cache
-          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
-
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+    
       - run: yarn lint
-      # run tests!
       - run: yarn test
-      - run: $(yarn bin)cypress run --record --key=${CYPRESS_RECORD_KEY}
+      - run: yarn ci:cypress-run
