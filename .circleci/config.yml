@@ -28,10 +28,8 @@ jobs:
             - v1-deps-{{ .Branch }}
             - v1-deps
 
-      - run:
-        name: Install Dependencies
-        command: yarn install --frozen-lockfile
-
+      - run: yarn install --frozen-lockfile
+      
       - save_cache:
         paths:
           - node_modules
