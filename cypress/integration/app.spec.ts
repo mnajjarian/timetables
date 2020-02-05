@@ -7,6 +7,7 @@ describe('App', function() {
     cy.get('.dropdown-item')
       .first()
       .click()
+      .wait(1000)
     cy.get('button')
       .click()
       .wait(1000)
