@@ -7,7 +7,7 @@ describe('App', function() {
     cy.get('.dropdown-item')
       .first()
       .click()
-    cy.get('.fa-directions')
+    cy.get('button')
       .click()
       .wait(1000)
       .get('.btn')

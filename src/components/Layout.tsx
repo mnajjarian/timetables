@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import 'leaflet/dist/images/marker-shadow.png'
 import 'leaflet/dist/images/marker-icon.png'
-import polyline from 'polyline'
+import polyline from '@mapbox/polyline'
 import L from 'leaflet'
 import { MapContext } from '../context/context'
 

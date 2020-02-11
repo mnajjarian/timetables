@@ -36,5 +36,4 @@ jobs:
       - run: yarn lint
 
       # run tests!
-      - run: yarn ci:cypress-run
       - run: yarn test
