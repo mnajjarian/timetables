@@ -37,6 +37,7 @@ jobs:
 
       # run tests!
       - run: yarn test
+      - run: yarn ci:cypress-run
 
       - run:
           name: Deploy
