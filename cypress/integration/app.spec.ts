@@ -1,3 +1,5 @@
+import 'cypress'
+
 describe('App', function() {
   it('Search for a place and get direction should work', function() {
     cy.visit('http://localhost:3000')
