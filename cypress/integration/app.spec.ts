@@ -1,4 +1,4 @@
-import 'cypress'
+/// <reference types="cypress" />
 
 describe('App', function() {
   it('Search for a place and get direction should work', function() {
