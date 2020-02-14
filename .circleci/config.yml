@@ -42,17 +42,17 @@ jobs:
       # run tests!
       - run: yarn test
 
-  workflows:
-    version: 2
-    build:deploy:
-      jobs:
-        - build
-        - docker/publish:
-            image: gumshoe/$CIRCLE_PROJECT_REPONAME
-            dockerfile: dockerfile
-            requires:
-              - build
-            filters:
-              btanches:
-                only:
-                  - master
+workflows:
+  version: 2
+  build:deploy:
+    jobs:
+      - build
+      - docker/publish:
+          image: gumshoe/$CIRCLE_PROJECT_REPONAME
+          dockerfile: dockerfile
+          requires:
+            - build
+          filters:
+            btanches:
+              only:
+                - master
