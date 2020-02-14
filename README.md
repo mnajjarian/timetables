@@ -41,8 +41,8 @@ DOM Testing with Jest and React Testing Library
 
 ## Continuous Deployment
 
-Build, Test and Deploy whit Circle CI
-[![CircleCI](https://circleci.com/gh/mnajjarian/timetables.svg?style=svg)](https://circleci.com/gh/mnajjarian/timetables)
+Build, Test and Deploy by Circle CI
+
 
 ## Built With
 
@@ -59,4 +59,3 @@ Build, Test and Deploy whit Circle CI
 * Heroku
 * CircleCI
 * Eslint
-
