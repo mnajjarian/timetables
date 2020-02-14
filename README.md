@@ -41,7 +41,7 @@ DOM Testing with Jest and React Testing Library
 
 ## Continuous Deployment
 
-Build, Test and Deploy whit Circle CI
+Build, Test and Deploy by Circle CI
 
 
 ## Built With
