@@ -4,6 +4,8 @@ Eficode headquarters is located at Pohjoinen Rautatiekatu 25. Even while it is c
 
 The task is to help Eficodeans leave at the right time so that they would not miss any important, or why not less important, commitments.
 
+## [Demo](https://peaceful-dusk-48356.herokuapp.com/)
+
 ## Getting Started
 
 First, fork the repository at:
