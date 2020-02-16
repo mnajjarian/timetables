@@ -1,15 +1,24 @@
-# build environment
-FROM node:12.2.0-alpine as build
+FROM node:alpine as builder
+
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-COPY package.json /app/package.json
-RUN yarn --silent
-RUN yarn add global react-scripts@3.0.1 -g --silent
-COPY . /app
+
+COPY package.json ./
+COPY yarn.lock ./
+
+RUN yarn
+
+COPY . .
+
 RUN yarn build
 
-# production environment
-FROM nginx:1.16.0-alpine
-COPY --from=build /app/build /usr/share/nginx/html
+FROM node:alpine
+
+RUN yarn global add serve
+
+WORKDIR /app
+
+COPY --from=builder /app/build .
+
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["serve", "-p", "$port", "-s", "."]
