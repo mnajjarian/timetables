@@ -1,4 +1,4 @@
-FROM node:alpine as builder
+FROM node:alpine
 
 WORKDIR /app
 
@@ -19,6 +19,6 @@ WORKDIR /app
 
 COPY --from=builder /app/build .
 
-EXPOSE 80
+EXPOSE $PORT
 
 CMD ["serve", "-p", "$port", "-s", "."]
