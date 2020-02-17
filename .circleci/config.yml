@@ -37,11 +37,11 @@ jobs:
 
       # run tests!
       - run: yarn test
-
-      deployment:
-        staging:
-          branch: master
-          commands:
-            - docker login --username=$DOCKER_HUB_USER --password=$DOCKER_HUB_PASS 
-            - docker build --rm=false -t registry.heroku.com/APP_NAME/web .
-            - docker push registry.heroku.com/APP_NAME/web:latest
+      - run: heroku push origin master
+      # deployment:
+       # staging:
+         # branch: master
+         # commands:
+         #   - docker login --username=$DOCKER_HUB_USER --password=$DOCKER_HUB_PASS 
+         #   - docker build --rm=false -t registry.heroku.com/APP_NAME/web .
+          #  - docker push registry.heroku.com/APP_NAME/web:latest

@@ -1,24 +1,12 @@
-FROM node:alpine
-
+FROM node:alpine as builder
 WORKDIR /app
-
-COPY package.json ./
-COPY yarn.lock ./
-
-RUN yarn
-
+COPY ./package.json ./
+RUN yarn install --silent
 COPY . .
-
 RUN yarn build
 
-FROM node:alpine
-
-RUN yarn global add serve
-
-WORKDIR /app
-
-COPY --from=builder /app/build .
+FROM nginx:1.16.0-alpine
+COPY --from=builder /app/build /usr/share/nginx/html
 
 EXPOSE $PORT
-
-CMD ["serve", "-p", "$port", "-s", "."]
+CMD ["/usr/sbin/nginx","-g","daemon off;"]
