@@ -60,8 +60,6 @@ export interface Leg {
 }
 
 export interface Spot {
-  //lat: number
-  //lon: number
   name: string
 }
 export interface Coord {
@@ -71,7 +69,6 @@ export interface Coord {
 
 interface Trip {
   pattern: {
-    //code: string
     name: string
   }
 }
