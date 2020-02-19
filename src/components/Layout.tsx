@@ -54,12 +54,10 @@ const Layout: React.FC<Props> = (props: Props): JSX.Element => {
   }, [data])
 
   return (
-
-
-    <div>
+    <>
       <div style={{ height: '100vh', width: '100%', zIndex: 1 }} id="map" />
-      {props.children}
-    </div>
+      <div className="container">{props.children} </div>
+    </>
   )
 }
 

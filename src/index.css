@@ -15,6 +15,7 @@ code {
 .collapse {
   font-size: .9rem;
   overflow-x: scroll;
+  padding: 5px;
 }
 .search {
   position: absolute;
@@ -69,6 +70,15 @@ a[href='#menuCard'] {
   justify-content: center;
   align-items: center;
 }
+.details-item {
+  width: 100%;
+  display: flex;
+}
+.details-item > span:last-child {
+  position: relative;
+  margin-left: auto;
+}
+
 /* Override leaflet styles */
 
 .leaflet-left {

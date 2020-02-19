@@ -57,7 +57,7 @@ const Timetable: React.FC<TimetableProps> = (props: TimetableProps): JSX.Element
     }
   }
   return (
-    <div>
+    <>
       <li className="route-table list-group-item ">
         <div className="row">
           <span
@@ -93,7 +93,7 @@ const Timetable: React.FC<TimetableProps> = (props: TimetableProps): JSX.Element
       <div className='collapse' id={'ID'+itineraries.duration}>
         <Detaile itineraries={itineraries} origin={origin} destination={destination} />
       </div>
-    </div>
+    </>
   )
 }
 
