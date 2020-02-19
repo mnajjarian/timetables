@@ -24,17 +24,29 @@ const Layout: React.FC<Props> = (props: Props): JSX.Element => {
       id: 'hsl-map'
     }).addTo(map)
 
-    const Icon = L.icon({
+    const BlueIcon = L.icon({
       iconUrl: require('leaflet/dist/images/marker-icon.png'),
-      shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+      shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
     })
+    const redIcon = L.icon({
+      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
 
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    })
     data.markers &&
-            data.markers.forEach(m => {
-              L.marker(m, { icon: Icon }).addTo(map)
+            data.markers.forEach((m, index) => {
+              L.marker(m, { icon: index === 0 ? BlueIcon : redIcon }).addTo(map)
+
               for (let i = 0; i < data.points.length; i++) {
                 const points = polyline.decode(data.points[i].replace(/\\\\/g, '\\'))
-
                 map.flyToBounds(
                   L.polyline(points as [number, number][], {
                     color: 'blue',

@@ -25,7 +25,6 @@ const Search: FC = (): JSX.Element => {
   const [coordinate, setCoordinate] = useState<LatLngExpression>()
   const [toggle, setToggle] = useState(false)
   const { dataDispatch } = useContext(MapContext)
-  console.log(state)
   const handleClick = (coord, label) => (): void => {
     setCoordinate(coord)
     setLabel(label)
@@ -37,13 +36,14 @@ const Search: FC = (): JSX.Element => {
     axios(`https://api.digitransit.fi/geocoding/v1/search?text=${state}&size=5`).then(result => {
       setData(result.data)
     })
-    if (!state) {
+
+    if(!state) {
       setLabel(undefined)
       dataDispatch({
         type: 'REMOVE_MAP'
       })
     }
-  }, [state, coordinate])
+  }, [state, coordinate, dataDispatch])
 
   const handleChange = (e: { target: { value: string } }): void => {
     setState(e.target.value)

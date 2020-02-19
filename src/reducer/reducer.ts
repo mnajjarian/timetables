@@ -2,7 +2,6 @@ import { LatLngExpression } from 'leaflet'
 
 export enum Types {
     ADD_POINT = 'ADD_POINT',
-    ADD_MARKER ='ADD_MARKER',
     REMOVE_MAP = 'REMOVE_MAP',
 }
 
