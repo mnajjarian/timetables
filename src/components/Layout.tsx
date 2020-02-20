@@ -13,7 +13,7 @@ const Layout: React.FC<Props> = (props: Props): JSX.Element => {
   const { data } = useContext(MapContext)
 
   useEffect(() => {
-    const map = L.map('map').setView([60.192059, 24.945831], 12)
+    const map = L.map('map').setView([60.192059, 24.805831], 12)
     L.tileLayer('https://cdn.digitransit.fi/map/v1/{id}/{z}/{x}/{y}.png', {
       attribution:
                 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
