@@ -23,7 +23,7 @@ const RouteInfo: React.FC<Props> = (props: Props) => {
     <Query<Data, Variable> query={FIND_PLAN} variables={{ originLat, originLon, destLat, destLon }}>
       {({ loading, error, data }): JSX.Element => {
         if (loading) return <div className="spinner-border m-5" role="status"></div>
-        if (error) return <div>Error...</div>
+        if (error) return <div>{error.name}</div>
         return (
           <div className='route-list bg-info' >
             {data?.plan.itineraries.map(it => (
