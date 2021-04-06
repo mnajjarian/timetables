@@ -47,7 +47,6 @@
         "react-leaflet": "^2.6.1",
         "react-scripts": "3.2.0",
         "styled-components": "^5.0.0",
-        "typescript": "~3.7.2",
         "uikit": "^3.3.0"
     },
     "eslintConfig": {
@@ -79,6 +78,7 @@
         "eslint-plugin-prettier": "^3.1.2",
         "eslint-plugin-react": "^7.18.0",
         "prettier": "^1.19.1",
-        "start-server-and-test": "^1.10.8"
+        "start-server-and-test": "^1.10.8",
+        "typescript": "^4.2.3"
     }
 }
