@@ -1,9 +1,12 @@
-name: Release Timetables with Heroku
+name: Development pipeline
 
 on:
   push:
-    branches: 
+    branches:
       - master
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
 
 jobs:
   build:

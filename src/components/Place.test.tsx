@@ -17,6 +17,7 @@ const feature: Feature = {
 
 describe('Place component', () => {
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleClick = (coord, label) => jest.fn()
 
   it('should show the right label and be clickable', () => {
