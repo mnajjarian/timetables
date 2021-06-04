@@ -20,7 +20,7 @@ jobs:
     - name: test
       run: npm run test
     - name: lint
-      run: npm run eslint
+      run: npm run lint
     - name: Login to Heroku Container registry
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
