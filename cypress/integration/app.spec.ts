@@ -2,6 +2,7 @@
 
 describe('App', function() {
   it('Search for a place and get direction should work', function() {
+    cy.wait(3000)
     cy.visit('http://localhost:3000')
     cy.get('input')
       .type('Kamppi')
