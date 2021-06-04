@@ -9,7 +9,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  build:
+  deployment_pipeline:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
@@ -26,8 +26,8 @@ jobs:
       uses: cypress-io/github-action@v2
       with:
         command: npm run cypress:run
-        start: npm run start-prod
-        wait-on: http://localhost:5000
+        start: npm run start
+        wait-on: http://localhost:3000
     - name: lint
       run: npm run lint
     - name: Login to Heroku Container registry
