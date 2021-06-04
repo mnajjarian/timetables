@@ -56,7 +56,7 @@ const Layout: React.FC<Props> = (props: Props): JSX.Element => {
                     .getBounds()
                 )
               }
-              //map.flyTo(data.markers[1], 11);
+              map.flyTo(data.markers[1], 11)
             })
 
     return (): void => {

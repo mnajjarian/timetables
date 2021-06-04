@@ -1,12 +1,12 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { Data, Variable, Coord } from '../api/interfaces'
+import { Data, Variable } from '../api/interfaces'
 import { Timetable } from './index'
 import { FIND_PLAN } from '../query'
 
 interface Props {
-    origin: Coord
-    destination: Coord
+    origin: any
+    destination: any
 }
 
 const RouteInfo: React.FC<Props> = (props: Props) => {

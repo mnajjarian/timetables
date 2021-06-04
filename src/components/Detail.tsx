@@ -1,10 +1,10 @@
 import React from 'react'
 import { getTime, parseTime, switchMode } from '../utils/helpers'
-import { Itinerary, Coord } from '../api/interfaces'
+import { Itinerary, Coordinate } from '../api/interfaces'
 
 interface Props {
-    origin?: Coord;
-    destination?: Coord;
+    origin?: Coordinate;
+    destination?: Coordinate;
     itineraries?: Itinerary;
 }
 export const Detail = (props: Props): JSX.Element => {

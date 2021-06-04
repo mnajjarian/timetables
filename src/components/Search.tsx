@@ -25,8 +25,8 @@ const Search: FC = (): JSX.Element => {
   const [coordinate, setCoordinate] = useState<LatLngExpression>()
   const [toggle, setToggle] = useState(false)
   const { dataDispatch } = useContext(MapContext)
-  const handleClick = (coord, label) => (): void => {
-    setCoordinate(coord)
+  const handleClick = (coordinate, label) => (): void => {
+    setCoordinate(coordinate)
     setLabel(label)
     setState(label)
     setToggle(false)

@@ -2,7 +2,7 @@ import { LatLngExpression, LatLng } from 'leaflet'
 
 
 export interface Variable {
-  originLat: number
+  originLat: any
   originLon: number
   destLat: number
   destLon: number
@@ -62,7 +62,7 @@ export interface Leg {
 export interface Spot {
   name: string
 }
-export interface Coord {
+export interface Coordinate {
   label?: string;
   coordinate?: LatLngExpression | LatLng | number[];
 }

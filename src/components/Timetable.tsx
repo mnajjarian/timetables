@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Itinerary, Leg, Plan, Legs, Coord } from '../api/interfaces'
+import { Itinerary, Leg, Plan, Legs, Coordinate } from '../api/interfaces'
 import { MapContext } from '../context/context'
 import { Types } from '../reducer/reducer'
 import { parseTime, getTime } from '../utils/helpers'
@@ -8,8 +8,8 @@ import { Detaile } from './index'
 interface TimetableProps {
     itineraries: Itinerary;
     plan?: Plan;
-    origin: Coord;
-    destination: Coord;
+    origin: Coordinate;
+    destination: Coordinate;
 }
 
 const switchIcon = (leg: Leg): JSX.Element | undefined => {

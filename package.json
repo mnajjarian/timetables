@@ -47,7 +47,7 @@
         "react-leaflet": "^2.6.1",
         "react-scripts": "3.2.0",
         "styled-components": "^5.0.0",
-        "typescript": "^4.2.3",
+        "typescript": "^4.3.2",
         "uikit": "^3.3.0"
     },
     "eslintConfig": {

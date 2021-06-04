@@ -1,10 +1,10 @@
 import React, { useState, FC } from 'react'
 import { RouteInfo } from './index'
-import { Coord } from '../api/interfaces'
+import { Coordinate } from '../api/interfaces'
 
 
 interface Props {
-    origin: Coord;
+    origin: Coordinate;
 }
 
 const Journey: FC<Props> = (props: Props): JSX.Element => {
@@ -17,7 +17,7 @@ const Journey: FC<Props> = (props: Props): JSX.Element => {
     origin: { label, coordinate }, origin
   } = props
 
-  const destination: Coord = {
+  const destination: Coordinate = {
     label: 'Pohjoinen Rautatiekatu 25, Helsinki',
     coordinate: [60.169407, 24.926007]
   }
