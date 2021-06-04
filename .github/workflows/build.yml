@@ -16,7 +16,7 @@ jobs:
       with:
         node-version: "12.x"
     - name: test
-      run: yarn test
+      run: npm run test
     - name: Login to Heroku Container registry
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
