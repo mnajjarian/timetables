@@ -25,9 +25,7 @@ jobs:
     - name: e2e tests
       uses: cypress-io/github-action@v2
       with:
-        command: npm run cypress:run
-        start: npm run start
-        wait-on: http://localhost:3000
+        command: npm run ci:cypress-run
     - name: lint
       run: npm run lint
     - name: Login to Heroku Container registry

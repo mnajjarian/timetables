@@ -6,7 +6,6 @@ describe('App', function() {
     cy.visit('http://localhost:3000')
     cy.get('input')
       .type('Kamppi')
-    cy.wait(3000)
     cy.get('.dropdown-item')
       .first()
       .click()
