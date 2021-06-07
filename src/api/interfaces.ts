@@ -2,7 +2,7 @@ import { LatLngExpression, LatLng } from 'leaflet'
 
 
 export interface Variable {
-  originLat: any
+  originLat: number
   originLon: number
   destLat: number
   destLon: number
@@ -30,7 +30,7 @@ export interface Itinerary {
 }
 
 export interface Geometry {
-  coordinates: [];
+  coordinates: any[];
 }
 
 

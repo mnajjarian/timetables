@@ -47,14 +47,15 @@ const Layout: React.FC<Props> = (props: Props): JSX.Element => {
 
               for (let i = 0; i < data.points.length; i++) {
                 const points = polyline.decode(data.points[i].replace(/\\\\/g, '\\'))
-                map.flyToBounds(
+
+                /*            map.flyToBounds(
                   L.polyline(points as [number, number][], {
                     color: 'blue',
                     weight: 3
                   })
                     .addTo(map)
                     .getBounds()
-                )
+                ) */
               }
               // map.flyTo(data.markers[1], 11)
             })
