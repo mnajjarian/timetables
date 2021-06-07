@@ -45,7 +45,7 @@
         "react-dom": "^16.12.0",
         "react-is": "^16.12.0",
         "react-leaflet": "^2.6.1",
-        "react-scripts": "3.2.0",
+        "react-scripts": "3.0.1",
         "styled-components": "^5.0.0",
         "typescript": "^4.3.2",
         "uikit": "^3.3.0"

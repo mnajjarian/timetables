@@ -19,7 +19,7 @@ jobs:
       with:
         node-version: "12.x"
     - name: npm install
-      run: npm install --only=dev
+      run: npm install
     - name: test
       run: npm run test
     - name: lint
