@@ -6,7 +6,7 @@ import { fakeData } from '../utils/helpers'
 describe('Testing Detail', () => {
   it('render Detail without props', () => {
     const { container } = render(<Detaile />)
-    expect(container.textContent).toBe('')
+    expect(container.textContent).toBe(1)
   })
 
   it('render Detail with props', () => {
