@@ -2,10 +2,9 @@
 FROM node:12.2.0-alpine as build
 WORKDIR /usr/src/app
 ENV PATH /app/node_modules/.bin:$PATH
-COPY package.json /
+COPY . .
 RUN yarn install --silent
 RUN yarn add react-scripts@3.0.1 global --silent
-COPY . .
 RUN yarn build
 
 # production environment
