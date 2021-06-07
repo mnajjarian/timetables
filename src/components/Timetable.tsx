@@ -3,7 +3,7 @@ import { Itinerary, Leg, Plan, Legs, Coordinate } from '../api/interfaces'
 import { MapContext } from '../context/context'
 import { Types } from '../reducer/reducer'
 import { parseTime, getTime } from '../utils/helpers'
-import { Detaile } from './index'
+import { Detail } from './index'
 
 interface TimetableProps {
     itineraries: Itinerary;
@@ -91,7 +91,7 @@ const Timetable: React.FC<TimetableProps> = (props: TimetableProps): JSX.Element
         </a>
       </li>
       <div className='collapse' id={'ID'+itineraries.duration}>
-        <Detaile itineraries={itineraries} origin={origin} destination={destination} />
+        <Detail itineraries={itineraries} origin={origin} destination={destination} />
       </div>
     </>
   )
